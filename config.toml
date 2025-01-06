@@ -10,6 +10,9 @@ parallel-jobs = 1
 build-mode = "both"
 enabled = true
 included-patches = "'Custom branding icon for YouTube'"
+patcher-args = """\
+  -OappIcon=squid_game \
+  """
 version = "19.44.39"
 patches-source = "anddea/revanced-patches"
 rv-brand = "anddea ReVanced"
