@@ -15,7 +15,7 @@ patcher-args = """\
   """
 version = "19.44.39"
 patches-source = "anddea/revanced-patches"
-patches-version = "v3.2.0"
+patches-version = "v3.3.0-dev.3"
 rv-brand = "anddea ReVanced"
 riplib = true
 arch = "arm64-v8a"    
@@ -30,9 +30,9 @@ included-patches = "'Custom branding icon for YouTube Music'"
 patcher-args = """\
   -OappIcon=afn_red \
   """
-version = "7.25.53"
+version = "8.02.53"
 patches-source = "anddea/revanced-patches"
-patches-version = "v3.2.0"
+patches-version = "v3.3.0-dev.3"
 rv-brand = "anddea ReVanced"
 riplib = true
 arch = "arm64-v8a"    
