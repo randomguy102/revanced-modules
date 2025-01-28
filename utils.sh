@@ -585,7 +585,7 @@ build_rv() {
 			"${args[module_prop_name]}" \
 			"${app_name} ${args[rv_brand]}" \
 			"${version} (patches: ${rv_patches_ver%%.rvp})" \
-			"${app_name} ${args[rv_brand]} Magisk module" \
+			"${app_name} ${args[rv_brand]} Revanced module" \
 			"https://raw.githubusercontent.com/${GITHUB_REPOSITORY-}/update/${upj}" \
 			"$base_template"
 
@@ -622,5 +622,5 @@ versionCode=${NEXT_VER_CODE}
 author=𝙴𝙻𝙾𝙷𝙸𝙼
 description=${4}" >"${6}/module.prop"
 
-	if [ "$ENABLE_MAGISK_UPDATE" = true ]; then echo "updateJson=${5}" >>"${6}/module.prop"; fi
+	if [ "$ENABLE_MODULE_UPDATE" = true ]; then echo "updateJson=${5}" >>"${6}/module.prop"; fi
 }

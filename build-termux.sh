@@ -29,33 +29,33 @@ if [ ! -f ~/.rvmm_"$(date '+%Y%m')" ]; then
 	yes "" | pkg update -y && pkg install -y git curl jq openjdk-17 zip
 	: >~/.rvmm_"$(date '+%Y%m')"
 fi
-mkdir -p /sdcard/Download/revanced-magisk-module/
+mkdir -p /sdcard/Download/revanced-modules/
 
-if [ -d revanced-magisk-module ] || [ -f config.toml ]; then
-	if [ -d revanced-magisk-module ]; then cd revanced-magisk-module; fi
-	pr "Checking for revanced-magisk-module updates"
+if [ -d revanced-modules ] || [ -f config.toml ]; then
+	if [ -d revanced-modules ]; then cd revanced-modules; fi
+	pr "Checking for revanced-modules updates"
 	git fetch
 	if git status | grep -q 'is behind\|fatal'; then
-		pr "revanced-magisk-module is not synced with upstream."
-		pr "Cloning revanced-magisk-module. config.toml will be preserved."
+		pr "revanced-modules is not synced with upstream."
+		pr "Cloning revanced-modules. config.toml will be preserved."
 		cd ..
-		cp -f revanced-magisk-module/config.toml .
-		rm -rf revanced-magisk-module
+		cp -f revanced-modules/config.toml .
+		rm -rf revanced-modules
 		git clone https://github.com/j-hc/revanced-magisk-module --recurse --depth 1
-		mv -f config.toml revanced-magisk-module/config.toml
-		cd revanced-magisk-module
+		mv -f config.toml revanced-modules/config.toml
+		cd revanced-modules
 	fi
 else
-	pr "Cloning revanced-magisk-module."
+	pr "Cloning revanced-modules."
 	git clone https://github.com/j-hc/revanced-magisk-module --depth 1
-	cd revanced-magisk-module
+	cd revanced-modules
 	sed -i '/^enabled.*/d; /^\[.*\]/a enabled = false' config.toml
-	grep -q 'revanced-magisk-module' ~/.gitconfig 2>/dev/null ||
-		git config --global --add safe.directory ~/revanced-magisk-module
+	grep -q 'revanced-modules' ~/.gitconfig 2>/dev/null ||
+		git config --global --add safe.directory ~/revanced-modules
 fi
 
-[ -f ~/storage/downloads/revanced-magisk-module/config.toml ] ||
-	cp config.toml ~/storage/downloads/revanced-magisk-module/config.toml
+[ -f ~/storage/downloads/revanced-modules/config.toml ] ||
+	cp config.toml ~/storage/downloads/revanced-modules/config.toml
 
 if ask "Open rvmm-config-gen to generate a config?"; then
 	am start -a android.intent.action.VIEW -d https://j-hc.github.io/rvmm-config-gen/
@@ -63,11 +63,11 @@ fi
 printf "\n"
 until
 	if ask "Open 'config.toml' to configure builds?\nAll are disabled by default, you will need to enable at first time building"; then
-		am start -a android.intent.action.VIEW -d file:///sdcard/Download/revanced-magisk-module/config.toml -t text/plain
+		am start -a android.intent.action.VIEW -d file:///sdcard/Download/revanced-modules/config.toml -t text/plain
 	fi
 	ask "Setup is done. Do you want to start building?"
 do :; done
-cp -f ~/storage/downloads/revanced-magisk-module/config.toml config.toml
+cp -f ~/storage/downloads/revanced-modules/config.toml config.toml
 
 ./build.sh
 
@@ -78,10 +78,10 @@ for op in *; do
 		pr "glob fail"
 		exit 1
 	}
-	mv -f "${PWD}/${op}" ~/storage/downloads/revanced-magisk-module/"${op}"
+	mv -f "${PWD}/${op}" ~/storage/downloads/revanced-modules/"${op}"
 done
 
-pr "Outputs are available in /sdcard/Download/revanced-magisk-module folder"
-am start -a android.intent.action.VIEW -d file:///sdcard/Download/revanced-magisk-module -t resource/folder
+pr "Outputs are available in /sdcard/Download/revanced-modules folder"
+am start -a android.intent.action.VIEW -d file:///sdcard/Download/revanced-modules -t resource/folder
 sleep 2
-am start -a android.intent.action.VIEW -d file:///sdcard/Download/revanced-magisk-module -t resource/folder
+am start -a android.intent.action.VIEW -d file:///sdcard/Download/revanced-modules -t resource/folder
