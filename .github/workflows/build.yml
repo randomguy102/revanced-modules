@@ -130,16 +130,20 @@ jobs:
           APKS=${APKS#"$NL"}
 
           BODY="$(sed 's/^\* \*\*/↪ \*\*/g; s/^\* `/↪ \*\*/g; s/`/\*/g; s/^\* /\↪/g; s/\*\*/\*/g; s/###//g; s/^- /↪ /g; /^==/d;' ../build.md)"
-          MSG="*New build!*
+          MSG="*New Revanced build! 🎉*
 
           ${BODY}
 
           *▼ Download Links:*
-          Modules:
+          *Modules:*
           ${MODULES}
 
-          APKs:
+          *APKs:*
           ${APKS}
+
+          By [𝙴𝙻𝙾𝙷𝙸𝙼](https://t.me/elohim-etz)
+          *🌟 Check out my builder source:*
+          https://github.com/elohim-etz/revanced-modules
           "
           echo "'$MSG'"
           MSG=${MSG:0:9450}
