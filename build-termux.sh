@@ -41,13 +41,13 @@ if [ -d revanced-modules ] || [ -f config.toml ]; then
 		cd ..
 		cp -f revanced-modules/config.toml .
 		rm -rf revanced-modules
-		git clone https://github.com/j-hc/revanced-magisk-module --recurse --depth 1
+		git clone https://github.com/elohim-etz/revanced-modules --recurse --depth 1
 		mv -f config.toml revanced-modules/config.toml
 		cd revanced-modules
 	fi
 else
 	pr "Cloning revanced-modules."
-	git clone https://github.com/j-hc/revanced-magisk-module --depth 1
+	git clone https://github.com/elohim-etz/revanced-modules --depth 1
 	cd revanced-modules
 	sed -i '/^enabled.*/d; /^\[.*\]/a enabled = false' config.toml
 	grep -q 'revanced-modules' ~/.gitconfig 2>/dev/null ||
