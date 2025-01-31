@@ -121,9 +121,9 @@ jobs:
           for OUTPUT in *; do
             DL_URL="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/releases/download/${{ steps.next_ver_code.outputs.NEXT_VER_CODE }}/${OUTPUT}"
             if [[ $OUTPUT = *.apk ]]; then
-              APKS+="${NL}📦[${OUTPUT}](${DL_URL})"
+              APKS+="${NL}⬇️ [${OUTPUT}](${DL_URL})"
             elif [[ $OUTPUT = *.zip ]]; then
-              MODULES+="${NL}📦[${OUTPUT}](${DL_URL})"
+              MODULES+="${NL}⬇️ [${OUTPUT}](${DL_URL})"
             fi
           done
           MODULES=${MODULES#"$NL"}
@@ -134,15 +134,15 @@ jobs:
 
           ${BODY}
 
-          *▼ Download Links:*
-          *Modules:*
+          *Download Modules:*
           ${MODULES}
 
-          *APKs:*
+          *Download APKs:*
           ${APKS}
 
-          By [𝙴𝙻𝙾𝙷𝙸𝙼](https://t.me/elohim-etz)
-          *🌟 Check out my builder source:*
+          *By* [𝙴𝙻𝙾𝙷𝙸𝙼](https://t.me/elohim-etz)
+
+          *🌟 Check out builder source:*
           https://github.com/elohim-etz/revanced-modules
           "
           echo "'$MSG'"
