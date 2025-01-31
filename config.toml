@@ -15,7 +15,7 @@ patcher-args = """\
   """
 version = "19.44.39"
 patches-source = "anddea/revanced-patches"
-patches-version = "v3.4.0-dev.2"
+patches-version = "v3.4.0-dev.3"
 rv-brand = "anddea ReVanced"
 riplib = true
 arch = "arm64-v8a"    
@@ -32,7 +32,7 @@ patcher-args = """\
   """
 version = "8.02.53"
 patches-source = "anddea/revanced-patches"
-patches-version = "v3.4.0-dev.2"
+patches-version = "v3.4.0-dev.3"
 rv-brand = "anddea ReVanced"
 riplib = true
 arch = "arm64-v8a"    
