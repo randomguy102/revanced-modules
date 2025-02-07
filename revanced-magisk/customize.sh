@@ -16,7 +16,7 @@ elif [ "$ARCH" = "x86" ]; then
 elif [ "$ARCH" = "x64" ]; then
 	ARCH_LIB=x86_64
 else abort "ERROR: unreachable: ${ARCH}"; fi
-RVPATH=/data/adb/rvhc/${MODPATH##*/}.apk
+RVPATH=/data/adb/rvelo/${MODPATH##*/}.apk
 
 set_perm_recursive "$MODPATH/bin" 0 0 0755 0777
 
@@ -99,9 +99,9 @@ install() {
 			if echo "$op" | grep -q INSTALL_FAILED_VERSION_DOWNGRADE; then
 				ui_print "* Handling INSTALL_FAILED_VERSION_DOWNGRADE.."
 				if [ "$IS_SYS" = true ]; then
-					mkdir -p /data/adb/rvhc/empty /data/adb/post-fs-data.d
+					mkdir -p /data/adb/rvelo/empty /data/adb/post-fs-data.d
 					SCNM="/data/adb/post-fs-data.d/$PKG_NAME-uninstall.sh"
-					echo "mount /data/adb/rvhc/empty $BASEPATH" >"$SCNM"
+					echo "mount /data/adb/rvelo/empty $BASEPATH" >"$SCNM"
 					chmod +x "$SCNM"
 					ui_print "* Created the uninstall script."
 					ui_print ""
@@ -143,7 +143,7 @@ if [ $INS = true ] || [ -z "$(ls -A1 "$BASEPATHLIB")" ]; then
 fi
 
 ui_print "* Setting Permissions"
-mkdir -p "/data/adb/rvhc"
+mkdir -p "/data/adb/rvelo"
 mv -f "$MODPATH/base.apk" "$RVPATH"
 set_perm "$RVPATH" 1000 1000 644 u:object_r:apk_data_file:s0
 
