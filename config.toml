@@ -11,7 +11,7 @@ build-mode = "both"
 enabled = true
 included-patches = "'Custom branding icon for YouTube'"
 patcher-args = """\
-  -OappIcon=xisr_yellow \
+  -OappIcon=afn_red \
   """
 version = "19.44.39"
 patches-source = "anddea/revanced-patches"
@@ -28,7 +28,7 @@ build-mode = "both"
 enabled = true
 included-patches = "'Custom branding icon for YouTube Music'"
 patcher-args = """\
-  -OappIcon=xisr_yellow \
+  -OappIcon=afn_red \
   """
 version = "8.02.53"
 patches-source = "anddea/revanced-patches"
